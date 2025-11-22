@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Peanut Butter</title>
+    <meta name="description" content="Simple HTML page about peanut butter with a quick recipe and notes." />
+    <style>
+        :root{
+            --bg:#fff; --fg:#111; --accent:#c77;
+            --card:#f8f3ee;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        [data-theme="dark"]{ --bg:#0b0b0f; --fg:#eef; --accent:#e7a; --card:#121217; }
+        html,body{ height:100%; margin:0; background:var(--bg); color:var(--fg); }
+        .container{ max-width:900px; margin:2rem auto; padding:1rem; }
+        header{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+        h1{ font-size:1.4rem; margin:0; color:var(--accent); }
+        p.lead{ margin:0.5rem 0 1.25rem; color:inherit; opacity:0.9; }
+        .grid{ display:grid; gap:1rem; grid-template-columns: 1fr; }
+        @media (min-width:720px){ .grid{ grid-template-columns: 1fr 320px; } }
+        .card{ background:var(--card); border-radius:8px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+        ul{ margin:0.5rem 0 0 1rem; }
+        .recipe h3{ margin-top:0; }
+        .controls{ display:flex; gap:0.5rem; align-items:center; }
+        button{ background:var(--accent); color:#fff; border:0; padding:0.5rem 0.75rem; border-radius:6px; cursor:pointer; }
+        a{ color:var(--accent); text-decoration:none; }
+        .home-link{
+            display:inline-block;
+            padding:0.4rem 0.6rem;
+            border-radius:6px;
+            background:transparent;
+            color:var(--accent);
+            border:1px solid transparent;
+            text-decoration:none;
+        }
+        .home-link:hover{ background:rgba(0,0,0,0.03); }
+        .multimedia img{ width:100%; max-width:240px; border-radius:8px; display:block; margin-top:0.75rem; cursor:pointer; }
+        .multimedia audio{ width:100%; margin-top:0.5rem; }
+        footer{ margin-top:1.5rem; font-size:0.85rem; color:inherit; opacity:0.8; }
+    </style>
+</head>
+<body>
+    <div class="container" id="page">
+        <header>
+            <div>
+                <h1>Peanut Butter</h1>
+                <p class="lead">A minimal HTML page with a quick recipe and notes.</p>
+            </div>
+            <div class="controls">
+                <a class="home-link" href="index.html" aria-label="Back to index">Index</a>
+                <button id="themeToggle" aria-pressed="false">Toggle theme</button>
+            </div>
+        </header>
+
+        <main class="grid">
+            <section class="card">
+                <h2>About</h2>
+                <p>Peanut butter is a spread made from ground dry roasted peanuts. It can be creamy or crunchy and is used in sandwiches, baking, and sauces.</p>
+
+                <h3>Uses</h3>
+                <ul>
+                    <li>Sandwiches (PB&J)</li>
+                    <li>Smoothies and oatmeal</li>
+                    <li>Sauces for noodles or satay</li>
+                    <li>Baking cookies and energy bars</li>
+                </ul>
+
+                <article class="recipe" aria-labelledby="recipe-title">
+                    <h3 id="recipe-title">Peanut Butter Jelly — The Quick Silly Sandwich</h3>
+                    <p>A short, funny recipe for maximum joy and minimal effort.</p>
+                    <h4>Ingredients</h4>
+                    <ul>
+                        <li>2 slices of bread (the more dramatic the loaf, the better)</li>
+                        <li>2 tbsp peanut butter (choose your vibe: crunchy or smooth)</li>
+                        <li>1–2 tbsp jelly or jam (the louder the color, the louder the song)</li>
+                        <li>Optional: a banana, a tiny drum solo, and confidence</li>
+                    </ul>
+                    <h4>Instructions</h4>
+                    <ol>
+                        <li>Slap peanut butter on one slice. Slap jelly on the other. Try not to dance yet.</li>
+                        <li>Press slices together with enthusiasm. If you hear "Peanut Butter Jelly Time" in your head, that's normal.</li>
+                        <li>Optional: cut into funky shapes, perform a victory dance, and enjoy.</li>
+                    </ol>
+                </article>
+            </section>
+
+            <aside class="card" aria-labelledby="nutr-label">
+                <h2 id="nutr-label">Nutrition (per 2 tbsp)</h2>
+                <p>Approximate values:</p>
+                <ul>
+                    <li>Calories: 180–200</li>
+                    <li>Protein: 7–8 g</li>
+                    <li>Fat: 16 g</li>
+                    <li>Carbs: 6–8 g</li>
+                </ul>
+
+                <h3>Notes</h3>
+                <p>Choose natural peanut butter without added sugars for a cleaner ingredient list. Store unopened jars in a cool, dry place; refrigerate after opening for longer freshness.</p>
+
+                <div class="multimedia" aria-label="Peanut Butter Jelly time multimedia">
+                    <!-- Replace the src values with your own local files or URLs.
+                         Do not include copyrighted files without permission. -->
+                    <img id="dancingImg" src="assets/dancing-guy.gif" alt="Animated dancer doing the Peanut Butter Jelly Time dance" />
+                    <figcaption style="font-size:0.85rem; margin-top:0.25rem; opacity:0.9;">Click the image to play/pause the song.</figcaption>
+
+                    <audio id="pbjAudio" controls preload="none" aria-label="Peanut Butter Jelly Time audio">
+                        <source src="assets/peanut-butter-jelly-time.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Made with peanuts. <a href="#" onclick="return false;">Learn more</a></p>
+        </footer>
+    </div>
+
+    <script>
+        (function(){
+            const btn = document.getElementById('themeToggle');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initial = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', initial);
+            btn.setAttribute('aria-pressed', initial === 'dark');
+
+            btn.addEventListener('click', function(){
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const next = isDark ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                btn.setAttribute('aria-pressed', next === 'dark');
+                localStorage.setItem('theme', next);
+            });
+
+            // Multimedia: clicking the image toggles audio play/pause
+            const img = document.getElementById('dancingImg');
+            const audio = document.getElementById('pbjAudio');
+            if (img && audio) {
+                img.addEventListener('click', function(){
+                    if (audio.paused) {
+                        // Attempt to play; user gesture by clicking the image should allow playback
+                        audio.play().catch(()=>{ /* playback failed (browser policy) */ });
+                    } else {
+                        audio.pause();
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
